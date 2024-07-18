@@ -1,14 +1,21 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #f7f7f7; /* light gray background */
+    background-image: url('/img/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
 }
 
 #quiz-container {
+    max-width: 600px; /* limit width to 600px */
+    margin: 40px auto; /* center the container */
+    padding: 30px;
     background-color: #fff;
-    padding: 20px;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
 }
 
 #question-container {
@@ -19,6 +26,7 @@ body {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
+    color: #333; /* dark gray text */
 }
 
 #options {
@@ -28,11 +36,22 @@ body {
 }
 
 #options li {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    padding-left: 20px;
+    position: relative;
 }
 
 #options input[type="radio"] {
-    margin-right: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#options label {
+    display: block;
+    margin-left: 20px;
+    font-size: 18px;
+    color: #666; /* medium gray text */
 }
 
 #score-container {
@@ -42,29 +61,42 @@ body {
 #score {
     font-size: 18px;
     font-weight: bold;
+    color: #333; /* dark gray text */
 }
 
-#next-question {
+#next-question, #play-again {
     width: 100%;
     margin-bottom: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50; /* green button */
+    color: #fff; /* white text */
+    cursor: pointer;
+}
+
+#next-question:hover, #play-again:hover {
+    background-color: #3e8e41; /* darker green on hover */
 }
 
 #result-container {
     display: none;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #result {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
+    color: #333; /* dark gray text */
 }
 
 #final-score {
     font-size: 18px;
     font-weight: bold;
-}
-
-#play-again {
-    width: 100%;
-    margin-bottom: 20px;
+    color: #666; /* medium gray text */
 }
