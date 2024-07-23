@@ -1,87 +1,62 @@
-/* Estilo Geral */
+/* Global Styles */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
+    background-color: #f8f9fa;
+    color: #343a40;
     margin: 0;
     padding: 0;
 }
 
-.parallax {
-    position: relative;
-    background-image: url('/img/bg-parallax.jpg');
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-}
-
-.overlay {
-    background: rgba(0, 0, 0, 0.5); /* Translucent overlay */
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 header {
-    text-align: center;
-    color: #fff;
+    background: linear-gradient(135deg, #007bff, #00c6ff);
 }
 
-header h1 {
+header .display-4 {
     font-size: 3rem;
-    font-weight: 700;
-}
-
-header p {
-    font-size: 1.25rem;
-}
-
-.btn-light {
-    background-color: #ffffff;
-    border-color: #ffffff;
-    color: #333;
-}
-
-.btn-light:hover {
-    background-color: #f8f9fa;
-    border-color: #f8f9fa;
 }
 
 .card {
-    border-radius: 10px;
+    border-radius: 0.5rem;
+    border: none;
 }
 
-.card.shadow-sm {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.card p {
-    font-size: 1rem;
-}
-
-.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #004085;
+.card-title {
+    font-size: 1.25rem;
 }
 
 footer {
-    background-color: #f8f9fa;
+    background-color: #e9ecef;
+    color: #6c757d;
 }
 
-/* Efeitos de Transição */
-.btn, .card {
-    transition: all 0.3s ease;
+/* Sidebar Styles */
+#sidebar {
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #343a40;
+    color:#00c6ff;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 100;
 }
 
-.btn:hover, .card:hover {
-    transform: translateY(-3px);
+#sidebar.show {
+    transform: translateX(90px);
 }
+
+#sidebar.nav-link {
+    color: #fff;
+    font-weight: 500;
+    
+}
+
+#sidebarn .nav:hover {
+    background-color: #495057;
+    transform: translateX(100%);
+    
+}
+
+/* Main
