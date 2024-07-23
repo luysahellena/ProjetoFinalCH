@@ -1,3 +1,4 @@
+// Definindo as perguntas
 let questions = [
     {
         question: "What is the capital of France?",
@@ -14,7 +15,7 @@ let questions = [
         options: ["F. Scott Fitzgerald", "Harper Lee", "Jane Austen", "J.K. Rowling"],
         correct: 1
     },
-    //Adicionar mais perguntas
+    // Adicione mais perguntas conforme necessário
 ];
 
 let currentQuestion = 0;
@@ -22,28 +23,31 @@ let score = 0;
 
 // Carrega a próxima questão
 function loadQuestion() {
-    // Obtem a questão atual
     const questionData = questions[currentQuestion];
-
+    
     // Define o texto da questão
     document.getElementById("question").textContent = questionData.question;
-
+    
     // Define as opções
     for (let i = 0; i < questionData.options.length; i++) {
-        document.getElementById("option" + (i + 1)).nextElementSibling.textContent = questionData.options[i];
+        const optionElement = document.getElementById("option" + (i + 1));
+        optionElement.nextElementSibling.textContent = questionData.options[i];
+        optionElement.checked = false; // Desmarcar as opções
     }
 }
 
 // Verifica a resposta
 function checkAnswer() {
     const selectedOption = document.querySelector('input[name="option"]:checked');
-
+    
     if (selectedOption) {
-        const selectedIndex = parseInt(selectedOption.id.replace("option", ""));
-        if (selectedIndex - 1 === questions[currentQuestion].answer) {
+        const selectedIndex = parseInt(selectedOption.id.replace("option", "")) - 1;
+        
+        if (selectedIndex === questions[currentQuestion].correct) {
             score++;
             document.getElementById("score").textContent = "Score: " + score;
         }
+        
         // Avança para a próxima questão
         currentQuestion++;
         if (currentQuestion < questions.length) {
@@ -56,11 +60,9 @@ function checkAnswer() {
 
 // Exibe os resultados
 function showResult() {
-    // Esconde o contêiner do quiz e mostra o contêiner de resultados
     document.getElementById("quiz-container").style.display = "none";
     document.getElementById("result-container").style.display = "block";
 
-    // Define o texto do resultado
     if (score === questions.length) {
         document.getElementById("result").textContent = "Parabéns! Você acertou todas as questões!";
     } else {
@@ -72,17 +74,22 @@ function showResult() {
 
 // Reinicia o quiz
 function playAgain() {
-    // Reinicia a pontuação e a questão atual
     score = 0;
     currentQuestion = 0;
 
-    // Esconde o contêiner de resultados e mostra o contêiner do quiz
     document.getElementById("result-container").style.display = "none";
     document.getElementById("quiz-container").style.display = "block";
 
-    // Carrega a primeira questão
     loadQuestion();
 }
+
+// Inicializa o quiz
+document.addEventListener('DOMContentLoaded', () => {
+    loadQuestion();
+    document.getElementById("next-question").addEventListener("click", checkAnswer);
+    document.getElementById("play-again").addEventListener("click", playAgain);
+});
+
 
 // Carrega a primeira questão quando a página carregar
 loadQuestion();
@@ -97,3 +104,28 @@ $(document).ready(function() {
     $("#play-again").click(playAgain);
 });
 
+// Exemplo básico para manipulação do quiz
+$(document).ready(function() {
+    let score = 0;
+    $('#next-question').click(function() {
+        // Lógica para passar para a próxima pergunta
+        // Atualizar a pontuação, exibir perguntas, etc.
+    });
+
+    $('#play-again').click(function() {
+        // Lógica para reiniciar o quiz
+        $('#result-container').hide();
+        $('#quiz-container').show();
+    });
+});
+
+// Incluir a biblioteca ScrollMagic
+const controller = new ScrollMagic.Controller();
+
+// Definir o efeito parallax
+new ScrollMagic.Scene({
+    triggerElement: ".parallax", 
+    duration: "100%" // Ajuste a duração conforme necessário
+})
+.setPin(".parallax")
+.addTo(controller);
